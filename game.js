@@ -48,7 +48,7 @@ var Snake = (function () {
       player.x = INITIAL_PLAYER.x;
       player.y = INITIAL_PLAYER.y;
       // this.RandomFruit();
-      reward = 0;
+      reward = 1;
 
       lastAction = ActionEnum.none;
 
@@ -152,6 +152,8 @@ var Snake = (function () {
         ctx.font = "small-caps 14px Helvetica";
         ctx.fillText("(esc) reset", 24, 356);
         ctx.fillText("(space) pause", 24, 374);
+        ctx.fillText("Game By driwdix3", 24, 390);
+        ctx.fillText("better play in laptop/pc", 24, 10);
       }
 
       ctx.fillStyle = 'cyan';
@@ -184,17 +186,13 @@ var Snake = (function () {
         })());
       }
 
-      ctx.fillStyle = 'red';
+      ctx.fillStyle = 'lime';
       ctx.fillRect(fruit.x * gridSize+1, fruit.y * gridSize+1, gridSize-2, gridSize-2);
 
       if(stopped) {
         ctx.fillStyle = 'rgba(250,250,250,0.8)';
         ctx.font = "small-caps bold 14px Helvetica";
         ctx.fillText("press ANY ARROW KEYS to START...", 24, 374);
-      if(stopped) 
-        ctx. fillStyle = 'rgba(250,360,250,0,9)';
-        ctx.font = "small-caps bold 14px Helvetica";
-        ctx.filltext("Game By driwdix", 24, 374);
       }
       ctx.fillStyle = 'white';
       ctx.font = "bold small-caps 16px Helvetica";
@@ -240,7 +238,8 @@ var Snake = (function () {
   }
 
   return {
-    start: function (fps = 30) {
+    start: function (fps = 30, easy = 6) 
+      {
       window.onload = setup;
       intervalID = setInterval(game.loop, 1000 / fps);
     },
